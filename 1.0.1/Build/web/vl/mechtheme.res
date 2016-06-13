@@ -1,2 +1,0 @@
-﻿lavaclick.jpg
-lava.jpg

@@ -1,3 +1,0 @@
-PARTDTALIB*PARTDTALIB                                                                                                                     Y
-PARTLIB   *PARTLIB                                                                                                                        Y
-PARTPGMLIB*PARTPGMLIB                                                                                                                     Y
