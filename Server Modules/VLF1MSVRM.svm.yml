@@ -1,0 +1,92 @@
+﻿ServerModule:
+  Name:               VLF1MSVRMOD
+  Target Platform:    Windows/IBM i/Linux
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "VLF One Mech Server Module"
+
+  - FRA:
+      Description:        "VLF One Mech Server Module"
+
+  Source: |
+    Begin_Com Role(*EXTENDS #PRIM_SRVM)
+    Define Field(#Response) Type(*STRING)
+    Define Field(#uUsername) Type(*STRING)
+    Define Field(#uPassword) Type(*STRING)
+    Define Field(#uEmail) Type(*STRING)
+    Group_By Name(#UserData) Fields(#MUSER #MPASSWRD #MEmail #MCBill #MXP #MXPN #MAvatar #MAdmin #MRank #MRankVal #Response)
+    
+    Srvroutine Name(Search)
+    Def_List Name(#MechFileList) Fields(#MName #MDesc #MClass #MSpeed #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER #MCBill) Counter(#ListCount) Type(*Working)
+    Group_By Name(#MechData) Fields(#MName #MDesc #MClass #MSpeed #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER)
+    List_Map For(*OUTPUT) List(#MechFileList)
+    Group_Map For(*BOTH) Group(#MechData)
+    Field_Map For(*INPUT) Field(#Status)
+    Field_Map For(*BOTH) Field(#IO$STS)
+    Clr_List Named(#MechFileList)
+    Case Of_Field(#Status)
+    * Search By name
+    When Value_Is(= N)
+    Select Fields(#MechFileList) From_File(MechFile) With_Key(#MName) Generic(*YES) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Add_Entry To_List(#MechFileList)
+    Endselect
+    * Search by Class
+    When Value_Is(= C)
+    Select Fields(#MechFileList) From_File(MECHClassV) With_Key(#MClass) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Add_Entry To_List(#MechFileList)
+    Endselect
+    * search for them all
+    When Value_Is(= F)
+    Select Fields(#MechFileList) From_File(MechFile) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Add_Entry To_List(#MechFileList)
+    Endselect
+    * update insert the data
+    When Value_Is(= UI)
+    Update Fields(#MechFileList) In_File(MechFile) With_Key(#MName) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    If_Status Is_Not(*OKAY)
+    Insert Fields(#MechFileList) To_File(MechFile) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endif
+    * Delete the data
+    When Value_Is(= D)
+    Delete From_File(MechFile) With_Key(#MName) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    * Get the single entry
+    When Value_Is(= G)
+    Fetch Fields(#MechData) From_File(MechFile) With_Key(#MName) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endcase
+    Endroutine
+    
+    Srvroutine Name(Ranks)
+    Def_List Name(#Ranks) Fields(#MRankVal #MRank) Type(*Working)
+    Group_By Name(#RankFields) Fields(#MRANKVAL #MRANK)
+    List_Map For(*OUTPUT) List(#Ranks)
+    Group_Map For(*BOTH) Group(#RankFields)
+    Field_Map For(*INPUT) Field(#Status)
+    Field_Map For(*BOTH) Field(#IO$STS)
+    Case Of_Field(#Status)
+    When Value_Is(= L)
+    Select Fields(#Ranks) From_File(MrankXP)
+    Add_Entry To_List(#Ranks)
+    Endselect
+    When Value_Is(= UI)
+    Update Fields(#RankFields) In_File(MrankXP) With_Key(#MRankVal) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    If_Status Is_Not(*OKAY)
+    Insert Fields(#RankFields) To_File(MrankXP) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endif
+    When Value_Is(= D)
+    Delete From_File(MrankXP) With_Key(#MRankVal) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endcase
+    Endroutine
+    
+    Srvroutine Name(Users)
+    
+    Endroutine
+    
+    Srvroutine Name(Weapons)
+    
+    Endroutine
+    End_Com

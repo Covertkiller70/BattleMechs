@@ -1,0 +1,49 @@
+﻿ServerModule:
+  Name:               VLFONESVRMOD
+  Target Platform:    Windows/IBM i/Linux
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "VLF One Server Module"
+
+  - FRA:
+      Description:        "VLF One Server Module"
+
+  Source: |
+    Begin_Com Role(*EXTENDS #PRIM_SRVM)
+    Srvroutine Name(FindAll)
+    Def_List Name(#PSLMSTList) Fields(#EMPNO #SURNAME #GIVENAME #ADDRESS1 #ADDRESS2 #ADDRESS3 #POSTCODE #PHONEHME #PHONEBUS #STARTDTER #TERMDATER #DEPTMENT #SECTION #SALARY #STARTDTE #TERMDATE #MNTHSAL) Counter(#ListCount) Type(*Working) Entrys(*Max)
+    Field_Map For(*BOTH) Field(#EMPNO)
+    List_Map For(*BOTH) List(#PSLMSTList)
+    
+    Select Fields(#PSLMSTList) From_File(PSLMST)
+    Add_Entry To_List(#PSLMSTList)
+    Endselect
+    Endroutine
+    
+    Srvroutine Name(Find)
+    Group_By Name(#DataFields) Fields(#SURNAME #GIVENAME #ADDRESS1 #ADDRESS2 #ADDRESS3 #POSTCODE #PHONEHME #PHONEBUS #STARTDTER #TERMDATER #DEPTMENT #SECTION #SALARY #STARTDTE #TERMDATE #MNTHSAL)
+    Field_Map For(*BOTH) Field(#EMPNO)
+    Group_Map For(*BOTH) Group(#DataFields)
+    Field_Map For(*OUTPUT) Field(#IO$STS)
+    Fetch Fields(#DataFields) From_File(PSLMST) With_Key(#EMPNO) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endroutine
+    
+    Srvroutine Name(Save)
+    Group_By Name(#SaveFields) Fields(#EMPNO #SURNAME #GIVENAME #ADDRESS1 #ADDRESS2 #ADDRESS3 #POSTCODE #PHONEHME #PHONEBUS #STARTDTER #TERMDATER #DEPTMENT #SECTION #SALARY #STARTDTE #TERMDATE #MNTHSAL)
+    Group_Map For(*BOTH) Group(#SaveFields)
+    Field_Map For(*OUTPUT) Field(#IO$STS)
+    
+    Update Fields(#SaveFields) In_File(PSLMST) With_Key(#EMPNO) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endroutine
+    
+    Srvroutine Name(Delete)
+    Field_Map For(*BOTH) Field(#EMPNO)
+    Field_Map For(*OUTPUT) Field(#IO$STS)
+    Delete From_File(PSLMST) With_Key(#EMPNO) Io_Status(#IO$STS) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endroutine
+    End_Com
