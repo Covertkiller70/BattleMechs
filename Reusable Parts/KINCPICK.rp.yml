@@ -1,0 +1,28 @@
+﻿Reusable Part:
+  Name:               KINCPICK
+  Enabled For RDMLX:  Yes
+  Target Platform:    Windows/IBM i/Linux
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Kinetic Weapon Picklist"
+
+  - FRA:
+      Description:        "Kinetic Weapon Picklist"
+
+  Source: |
+    Function Options(*DIRECT)
+    Begin_Com Role(*EXTENDS #PRIM_OBJT *implements #Prim_dc.iDynamicPicklist)
+    
+    Mthroutine Name(Load) Options(*Redefine)
+    #Picklist.RemoveAll
+    Select Fields(#MWeapon) From_File(WTypeV) With_Key(KINC)
+    #Picklist.Add Caption(#MWeapon) Value(#MWeapon)
+    Endselect
+    Endroutine
+    End_Com
+    
