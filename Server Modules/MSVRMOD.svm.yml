@@ -1,0 +1,206 @@
+﻿ServerModule:
+  Name:               MSVRMOD
+  Target Platform:    Windows/IBM i/Linux
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Server Module"
+
+  - FRA:
+      Description:        "Mech Server Module"
+
+  Source: |
+    Begin_Com Role(*EXTENDS #PRIM_SRVM)
+    Define Field(#Response) Type(*STRING)
+    Define Field(#uUsername) Type(*STRING)
+    Define Field(#uPassword) Type(*STRING)
+    Define Field(#uEmail) Type(*STRING)
+    Group_By Name(#Data) Fields(#MUSER #MPASSWRD #MEmail #MCBill #MXP #MXPN #MAvatar #MAdmin #MRank #MRankVal #Response)
+    Def_List Name(#Mechs) Fields(#MName #MClass #MSpeed #MDesc #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER) Type(*Working)
+    
+    Srvroutine Name(Register)
+    Group_Map For(*BOTH) Group(#Data)
+    #MCBill := 10000
+    #MXP := 0
+    #MAdmin := "N"
+    #MRankVal := 1
+    #MRank := "Recruit"
+    
+    Fetch Fields(#Data) From_File(MLOGIN) With_Key(#MUSER) Io_Status(#Status) Io_Error(*NEXT)
+    If Cond(#Status *EQ OK)
+    #Response := 'Username already exists! Enter a different Username'
+    Else
+    Fetch Fields(#Data) From_File(MEmailV) With_Key(#MEmail) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *EQ OK)
+    #Response := 'Email already exists! Enter a different Email Address'
+    Else
+    Insert Fields(#MUSER #MPASSWRD #MEmail #MCBill #MXP #MAvatar #MAdmin #MRankVal #MRank) To_File(MLOGIN) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *EQ VE)
+    #Response := 'Required Fields: Username, Password, Email'
+    Else
+    #Response := 'Registered'
+    Endif
+    Endif
+    Endif
+    Endroutine
+    
+    Srvroutine Name(Login)
+    Group_Map For(*BOTH) Group(#Data)
+    #uUsername := #MUSER
+    #uPassword := #MPASSWRD
+    Fetch Fields(#Data) From_File(MLOGIN) With_Key(#MUSER) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    #MUSER := #MUSER.UpperCase
+    #uUsername := #uUsername.UpperCase
+    
+    If Cond(#Status *EQ OK)
+    If Cond((#MUSER *EQ #uUsername) *And (#MPASSWRD *EQ #uPassword))
+    #Response := 'Authenticated'
+    Else
+    #Response := 'Password is incorrect'
+    Endif
+    Else
+    #Response := 'Incorrect Username'
+    Endif
+    Endroutine
+    
+    Srvroutine Name(ForgotUser)
+    Group_Map For(*BOTH) Group(#Data)
+    Fetch Fields(#MUSER) From_File(MEmailV) With_Key(#MEmail) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *EQ NR)
+    #Response := 'That Email does not have an Associated Username'
+    #MUSER := *BLANKS
+    Else
+    If Cond(#Status *EQ VE)
+    #Response := 'Enter an Email address'
+    Else
+    #Response := 'Username is: ' + #MUSER
+    Endif
+    Endif
+    Endroutine
+    
+    Srvroutine Name(ForgotPass)
+    Group_Map For(*BOTH) Group(#Data)
+    #uUsername := #MUSER
+    #uEmail := #MEmail
+    Fetch Fields(#Data) From_File(MLOGIN) With_Key(#MUSER) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *EQ OK)
+    Fetch Fields(#Data) From_File(MEmailV) With_Key(#uEmail) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *EQ OK)
+    #MPASSWRD := 'password'
+    Update Fields(#MPASSWRD) In_File(MLOGIN) With_Key(#MUSER)
+    #Response := 'Authenticated'
+    Else
+    #Response := "Email does not match the account"
+    Endif
+    Else
+    #Response := "No account matches this Username"
+    Endif
+    Endroutine
+    
+    Srvroutine Name(ChangeProfile)
+    Group_Map For(*BOTH) Group(#Data)
+    If Cond(#MPASSWRD *EQ *BLANKS)
+    Fetch Fields(#MPASSWRD) From_File(MLOGIN) With_Key(#MUSER)
+    Endif
+    Update Fields(#Data) In_File(MLOGIN) With_Key(#MUSER) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *EQ OK)
+    #Response := 'Profile Updated'
+    Else
+    Fetch Fields(#Data) From_File(MLOGIN) With_Key(#MUSER)
+    #Response := 'Profile Update Failed!'
+    Endif
+    Endroutine
+    
+    Srvroutine Name(RankXPCalc)
+    Define Field(#XPWin) Reffld(#MXP)
+    Define Field(#CBillWin) Reffld(#MXP)
+    Define Field(#OffsetXP) Reffld(#MXP)
+    Group_Map For(*BOTH) Group(#Data)
+    Field_Map For(*INPUT) Field(#XPWin)
+    Field_Map For(*INPUT) Field(#CBillWin)
+    
+    #OffsetXP := 100
+    
+    Case Of_Field(#MRankVal)
+    When Value_Is(*GT 5)
+    #OffsetXP := 500
+    When Value_Is(*GT 10)
+    #OffsetXP := 1000
+    When Value_Is(*GT 15)
+    #OffsetXP := 1500
+    When Value_Is(*GT 20)
+    #OffsetXP := 2000
+    When Value_Is(*GT 25)
+    #OffsetXP := 2500
+    Endcase
+    
+    #MXP #MXPN += #XPWin
+    #MCBill += #CBillWin
+    
+    If Cond((#MXPN *GE #OffsetXP) *And (#MRankVal *LE 30))
+    #MRankVal += 1
+    #MXPN := #MXPN - #OffsetXP
+    Fetch Fields(#MRank) From_File(MrankXP) With_Key(#MRankVal) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endif
+    Update Fields(#MXP #MRankVal #MRank #MXPN #MCBill) In_File(MLOGIN) With_Key(#MUSER) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endroutine
+    
+    Srvroutine Name(CheckOwn)
+    Field_Map For(*INPUT) Field(#MUSER)
+    Field_Map For(*OUTPUT) Field(#Response)
+    
+    Fetch Fields(#MName) From_File(MECHOWNV1) With_Key(#MUSER) Io_Status(#Status) Io_Error(*NEXT)
+    If_Status Is(*OKAY)
+    #Response := 'OWN'
+    Endif
+    Endroutine
+    
+    Srvroutine Name(LoadTiles)
+    List_Map For(*OUTPUT) List(#Mechs)
+    Select Fields(#Mechs) From_File(MechFile)
+    Add_Entry To_List(#Mechs)
+    Endselect
+    Endroutine
+    
+    Srvroutine Name(AddData)
+    Group_By Name(#Mech) Fields(#MName #MClass #MSpeed #MDesc #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER)
+    Group_By Name(#Weapon) Fields(#MWeapon #MWType #MWeaponD #MWDamage #MWHeat #MWCost #MWTon #MWIMG)
+    Def_List Name(#MALL) Fields(#MName #MClass #MWeapon #MWType) Type(*Working)
+    Group_Map For(*BOTH) Group(#Mech)
+    Group_Map For(*BOTH) Group(#Weapon)
+    List_Map For(*OUTPUT) List(#MALL)
+    Field_Map For(*BOTH) Field(#Status)
+    
+    Case Of_Field(#Status)
+    When Value_Is(= MI)
+    Insert Fields(#Mech) To_File(MechFile) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *NE OK)
+    Update Fields(#Mech) In_File(MechFile) With_Key(#MName) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endif
+    When Value_Is(= WI)
+    Insert Fields(#Weapon) To_File(MechWeapons) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    If Cond(#Status *NE OK)
+    Update Fields(#Weapon) In_File(MechWeapons) With_Key(#MWeapon) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endif
+    When Value_Is(= MD)
+    Delete From_File(MechFile) With_Key(#MName) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    When Value_Is(= WD)
+    Delete From_File(MechWeapons) With_Key(#MWeapon) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    When Value_Is(= G)
+    Select Fields(#MALL) From_File(MechFile)
+    Add_Entry To_List(#MALL)
+    Endselect
+    #MName #MClass := *BLANKS
+    Select Fields(#MALL) From_File(MechWeapons)
+    Add_Entry To_List(#MALL)
+    Endselect
+    When Value_Is(= F)
+    Fetch Fields(#Mech) From_File(MechFile) With_Key(#MName) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Fetch Fields(#Weapon) From_File(MechWeapons) With_Key(#MWeapon) Io_Status(#Status) Io_Error(*NEXT) Val_Error(*NEXT)
+    Endcase
+    Endroutine
+    End_Com

@@ -1,0 +1,28 @@
+﻿Field:
+  Name:               MIMAGE
+  Type:               BLOB
+  Length:             0
+  Decimals:           0
+  Default Value:      "*SQLNULL"
+  Enabled For RDMLX:  Yes
+  System Field:       No
+
+  Input Attributes:
+  - ASQN
+  - FE
+  - LC
+
+  Multilingual Details:
+  - ENG:
+      Description:        "mech Image BLOB"
+      Label:              "mech Image BLOB"
+      Heading1:           "mech"
+      Heading2:           "Image"
+      Heading3:           "BLOB"
+
+  - FRA:
+      Description:        "mech Image BLOB"
+      Label:              "mech Image BLOB"
+      Heading1:           "mech"
+      Heading2:           "Image"
+      Heading3:           "BLOB"

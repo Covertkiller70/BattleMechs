@@ -1,0 +1,40 @@
+﻿Field:
+  Name:               MSpeed
+  Type:               Packed
+  Length:             5
+  Decimals:           0
+  Default Value:      "*ZEROS"
+  Enabled For RDMLX:  No
+  System Field:       No
+
+  Input Attributes:
+  - FE
+  - RB
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Speed"
+      Label:              "Mech Speed"
+      Heading1:           "Mech"
+      Heading2:           "Speed"
+      Heading3:           " "
+
+  - FRA:
+      Description:        "Mech Speed"
+      Label:              "Mech Speed"
+      Heading1:           "Mech"
+      Heading2:           "Speed"
+      Heading3:           " "
+
+  Source: |
+    *
+    Begin_Com Role(*EXTENDS #PRIM_OBJT)
+    
+    Begin_Com Role(*Visual #PRIM_EVEF) Name(#VisualEdit) Defaultvisual(True) Usepicklist(False) Componentversion(1) Height(21) Width(251)
+    
+    End_Com
+    
+    Begin_Com Role(*Visual #PRIM_EVSE) Name(#VisualSpinEdit) Usepicklist(False) Componentversion(1) Height(21) Width(205) Increment(5)
+    
+    End_Com
+    End_Com

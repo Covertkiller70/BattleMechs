@@ -1,0 +1,28 @@
+﻿Field:
+  Name:               MWIMG
+  Type:               BLOB
+  Length:             0
+  Decimals:           0
+  Default Value:      "*SQLNULL"
+  Enabled For RDMLX:  Yes
+  System Field:       No
+
+  Input Attributes:
+  - ASQN
+  - FE
+  - LC
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Weapon Image"
+      Label:              "Weapon Image"
+      Heading1:           "Weapon"
+      Heading2:           "Image"
+      Heading3:           " "
+
+  - FRA:
+      Description:        "Weapon Image"
+      Label:              "Weapon Image"
+      Heading1:           "Weapon"
+      Heading2:           "Image"
+      Heading3:           " "

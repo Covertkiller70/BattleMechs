@@ -1,0 +1,41 @@
+﻿Field:
+  Name:               MEmail
+  Type:               String
+  Length:             512
+  Decimals:           0
+  Default Value:      "*NULL"
+  Enabled For RDMLX:  Yes
+  System Field:       No
+
+  Input Attributes:
+  - FE
+  - LC
+
+  Multilingual Details:
+  - ENG:
+      Description:        "User  Email Address"
+      Label:              "User  Email Add"
+      Heading1:           "User"
+      Heading2:           "Email"
+      Heading3:           "Address"
+
+  - FRA:
+      Description:        "User  Email Address"
+      Label:              "User  Email Add"
+      Heading1:           "User"
+      Heading2:           "Email"
+      Heading3:           "Address"
+
+  Source: |
+    *
+    Begin_Com Role(*EXTENDS #PRIM_OBJT)
+    
+    Begin_Com Role(*Visual #PRIM_EVEF) Name(#VisualEdit) Defaultvisual(True) Usepicklist(False) Componentversion(1) Height(21) Width(895)
+    
+    End_Com
+    
+    Begin_Com Role(*Weblet 'std_varchar.std_varchar') Name(#WebletTemplate) Defaultweblet(True)
+    
+    End_Com
+    
+    End_Com

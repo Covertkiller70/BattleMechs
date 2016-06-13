@@ -1,0 +1,27 @@
+﻿Field:
+  Name:               Status
+  Type:               Alphanumeric
+  Length:             2
+  Decimals:           0
+  Default Value:      "*BLANKS"
+  Reference Field:    IO$STS
+  Enabled For RDMLX:  No
+  System Field:       No
+
+  Input Attributes:
+  - FE
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Status"
+      Label:              "Status"
+      Heading1:           "Status"
+      Heading2:           " "
+      Heading3:           " "
+
+  - FRA:
+      Description:        "Status"
+      Label:              "Status"
+      Heading1:           "Status"
+      Heading2:           " "
+      Heading3:           " "

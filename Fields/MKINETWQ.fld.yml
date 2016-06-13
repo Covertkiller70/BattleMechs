@@ -1,0 +1,40 @@
+﻿Field:
+  Name:               MKineticWQ
+  Type:               Packed
+  Length:             1
+  Decimals:           0
+  Default Value:      "*ZEROS"
+  Enabled For RDMLX:  No
+  System Field:       No
+
+  Input Attributes:
+  - FE
+  - RB
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Kinetric Weapon Quantitiy"
+      Label:              "Mech Kinetric W"
+      Heading1:           "Mech"
+      Heading2:           "Kinetric"
+      Heading3:           "Weapon"
+
+  - FRA:
+      Description:        "Mech Kinetric Weapon Quantitiy"
+      Label:              "Mech Kinetric W"
+      Heading1:           "Mech"
+      Heading2:           "Kinetric"
+      Heading3:           "Weapon"
+
+  Source: |
+    *
+    Begin_Com Role(*EXTENDS #PRIM_OBJT)
+    
+    Begin_Com Role(*Visual #PRIM_EVEF) Name(#VisualEdit) Defaultvisual(True) Usepicklist(False) Componentversion(1) Height(21) Marginleft(201) Width(250)
+    
+    End_Com
+    
+    Begin_Com Role(*Visual #PRIM_EVSE) Name(#VisualSpinEdit) Usepicklist(False) Componentversion(1) Height(21) Marginleft(201) Width(250)
+    
+    End_Com
+    End_Com

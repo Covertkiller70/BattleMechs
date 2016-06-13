@@ -1,0 +1,130 @@
+﻿Reusable Part:
+  Name:               MECHFILT
+  Enabled For RDMLX:  Yes
+  Target Platform:    Browser
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech VLF One Filter"
+
+  - FRA:
+      Description:        "Mech VLF One Filter"
+
+  Source: |
+    * ================================================================================
+    * Type            : BUSINESS OBJECT FILTER
+    * Platform        : Web browser (Visual LANSA)
+    * Ancestor        : VF_AC007O
+    * Written By      : F14PGMLIB
+    * Written On      : 20th MAY 2016  at 14:53:40
+    * Copyright       : (C) Copyright
+    * Framework       : Battle_Mechs_Framework
+    * Application     : Battle Mechs
+    * Business Object : Mechs
+    * Filter          : New Filter
+    * ================================================================================
+    Function Options(*DIRECT)
+    Begin_Com Role(*EXTENDS #VF_AC007O) Height(105) Width(185) Layoutmanager(#TableLayout1)
+    * ================================================================================
+    * Simple Field, Group and Condition Definitions
+    * ================================================================================
+    Group_By Name(#XG_Ident) Fields(#MName #MClass #MSpeed #MJumpJets #MHealth)
+    Group_By Name(#XG_Keys) Fields(#MName #MClass)
+    
+    * The list used to receive data from the file access Server Module
+    Def_List Name(#MechFileList) Fields(#MName #MDesc #MClass #MSpeed #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER #MCBill) Counter(#ListCount) Type(*Working)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#TableLayout1)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column1) Displayposition(1) Parent(#TableLayout1)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row1) Displayposition(1) Parent(#TableLayout1) Height(0.36)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row2) Displayposition(2) Parent(#TableLayout1) Height(0.45)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row4) Displayposition(3) Parent(#TableLayout1) Height(2.19)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem1) Column(#Column1) Manage(#GPBX1) Parent(#TableLayout1) Row(#Row1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem3) Alignment(TopLeft) Column(#Column1) Manage(#MName) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem4) Alignment(TopLeft) Column(#Column1) Flow(Down) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MClassItem1) Manage(#MClass) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Column(#Column1) Flow(Down) Alignment(TopLeft) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem5) Alignment(TopLeft) Column(#Column1) Flow(Right) Manage(#SEARCHCMD) Parent(#TableLayout1) Row(#Row4) Sizing(None) Margintop(10) Marginleft(10)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#TableLayout2)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column2) Displayposition(1) Parent(#TableLayout2)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column3) Displayposition(2) Parent(#TableLayout2)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row3) Displayposition(1) Parent(#TableLayout2)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#RadioButton1Item1) Manage(#NAMERDO) Parent(#TableLayout2) Row(#Row3) Column(#Column2)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem2) Column(#Column3) Flow(Down) Manage(#CLASSRDO) Parent(#TableLayout2) Row(#Row3)
+    
+    
+    Define_Com Class(#MECHHANDLER)
+    Define_Com Class(#PRIM_GPBX) Name(#GPBX1) Displayposition(1) Height(13) Left(0) Parent(#COM_OWNER) Tabposition(1) Tabstop(False) Top(0) Width(185) Caption('Serach By') Layoutmanager(#TableLayout2)
+    Define_Com Class(#PRIM_RDBN) Name(#NAMERDO) Caption('Name') Displayposition(1) Left(4) Marginleft(2) Parent(#GPBX1) Tabposition(1) Top(15) Height(-6) Width(89) Buttonchecked(True)
+    Define_Com Class(#PRIM_RDBN) Name(#CLASSRDO) Caption('Class') Displayposition(2) Left(93) Marginleft(2) Parent(#GPBX1) Tabposition(2) Top(15) Height(-6) Width(88)
+    Define_Com Class(#MName.Visual) Name(#MName) Displayposition(2) Parent(#COM_OWNER) Tabposition(2) Top(23) Width(185) Marginleft(0) Labelposition(None)
+    Define_Com Class(#MClass.VisualPicklist) Name(#MClass) Displayposition(3) Parent(#COM_OWNER) Tabposition(3) Top(23) Width(185) Marginleft(0) Labelposition(None) Visible(False)
+    Define_Com Class(#PRIM_PHBN) Name(#SEARCHCMD) Caption('Search') Displayposition(4) Parent(#COM_OWNER) Tabposition(4) Top(39)
+    Group_By Name(#MechData) Fields(#MName #MDesc #MClass #MSpeed #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER #MCBill)
+    Define_Com Class(#VLF1MSVRM.Search) Name(#FindAll)
+    * ================================================================================
+    * Routines
+    * ================================================================================
+    
+    
+    Mthroutine Name(uInitialize) Options(*Redefine)
+    * Make this a hidden filter
+    Set Com(#Com_Owner) Avfilterlocation(LEFT)
+    * Hidden filters are not allowed to be moved to TOP LEFT RIGHT BOTTOM
+    * Set Com(#Com_Owner) Avallowlocationchange(False)
+    
+    * Go to busy state
+    #COM_OWNER.avGotoBusyState Showbusytext('Searching') Animated(False)
+    
+    * Ask Server Module VLF1MSVRM  to get the all the data from the server
+    #XG_Keys := *NULL
+    #Status := F
+    #FindAll.ExecuteAsync Mechfilelist(#MechFileList) Status(#Status)
+    Endroutine
+    
+    Evtroutine Handling(#FindAll.Completed)
+    #avListManager.ClearList
+    Selectlist Named(#MechFileList)
+    #avListManager.AddtoList Visualid1(#MName) Visualid2(#MClass) Akey1(#MName) Akey2(#MClass) Acolumn1(#MSpeed.AsString + " KPH") Acolumn2(#MJumpJets) Acolumn3(#MHealth.AsString + " HP")
+    Endselect
+    * Go back to display free state
+    #com_Owner.avGotoFreeState
+    #XG_Keys := *NULL
+    Endroutine
+    
+    
+    Evtroutine Handling(#COM_OWNER.avEvent) Withid(#UpdateList)
+    Clr_List Named(#MechFileList)
+    If Cond(#UpdateList.Value *EQ MechUpdate)
+    * Go to busy state
+    #COM_OWNER.avGotoBusyState Showbusytext('Searching') Animated(False)
+    * Ask Server Module VLF1MSVRM  to get the all the data from the server
+    #XG_Keys := *NULL
+    #FindAll.executeAsync Mechfilelist(#MechFileList) Status(F)
+    Endif
+    Endroutine
+    
+    Evtroutine Handling(#SEARCHCMD.Click)
+    If Cond(#NAMERDO.ButtonChecked *EQ True)
+    #Status := N
+    #FindAll.ExecuteAsync Mechfilelist(#MechFileList) Mechdata(#MechData) Status(#Status)
+    Else
+    #Status := C
+    #FindAll.ExecuteAsync Mechfilelist(#MechFileList) Mechdata(#MechData) Status(#Status)
+    Endif
+    Endroutine
+    
+    Evtroutine Handling(#CLASSRDO.Click)
+    #MName.Visible := False
+    #MClass.Visible := True
+    Endroutine
+    Evtroutine Handling(#NAMERDO.Click)
+    #MName.Visible := True
+    #MClass.Visible := False
+    Endroutine
+    End_Com
+    

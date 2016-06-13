@@ -1,0 +1,77 @@
+﻿Reusable Part:
+  Name:               MRANKFILT
+  Enabled For RDMLX:  Yes
+  Target Platform:    Browser
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Ranks Filter"
+
+  - FRA:
+      Description:        "Mech Ranks Filter"
+
+  Source: |
+    * ================================================================================
+    * Type            : BUSINESS OBJECT FILTER
+    * Platform        : Web browser (Visual LANSA)
+    * Ancestor        : VF_AC007O
+    * Written By      : F14PGMLIB
+    * Written On      : 24th MAY 2016  at 16:06:13
+    * Copyright       : (C) Copyright
+    * Framework       : Battle_Mechs_Framework
+    * Application     : Battle Mechs
+    * Business Object : Ranks
+    * Filter          : New Filter
+    * ================================================================================
+    Function Options(*DIRECT)
+    Begin_Com Role(*EXTENDS #VF_AC007O) Height(182) Width(326)
+    * ================================================================================
+    * Simple Field, Group and Condition Definitions
+    * ================================================================================
+    Group_By Name(#XG_Ident) Fields(#MRankVal #MRank)
+    Group_By Name(#XG_Keys) Fields(#MRankVal)
+    
+    * The list used to receive data from the file access Server Module
+    Def_List Name(#MrankXPList) Fields(#MRankVal #MRank) Counter(#ListCount) Type(*Working) Entrys(*Max)
+    
+    * ================================================================================
+    * Routines
+    * ================================================================================
+    Define_Com Class(#VLF1MSVRM.Ranks) Name(#FindAll)
+    
+    Mthroutine Name(uInitialize) Options(*Redefine)
+    Set Com(#Com_Owner) Avfilterlocation(NONE)
+    * Hidden filters are not allowed to be moved to TOP LEFT RIGHT BOTTOM
+    Set Com(#Com_Owner) Avallowlocationchange(False)
+    * Go to busy state
+    #COM_OWNER.avGotoBusyState Showbusytext('Searching') Animated(False)
+    * Ask Server Module VLF1MSVRM  to get the all the data from the server
+    #XG_Keys := *NULL
+    #Status := L
+    #FindAll.ExecuteAsync Ranks(#MrankXPList) Status(#Status)
+    Endroutine
+    
+    Evtroutine Handling(#COM_OWNER.avEvent) Withid(#UpdateList)
+    Clr_List Named(#MrankXPList)
+    If Cond(#UpdateList *EQ RankUpdate)
+    #COM_OWNER.avGotoBusyState Showbusytext('Searching') Animated(False)
+    #XG_Keys := *NULL
+    #Status := L
+    #FindAll.ExecuteAsync Ranks(#MrankXPList) Status(#Status)
+    Endif
+    Endroutine
+    
+    Evtroutine Handling(#FindAll.Completed)
+    #avListManager.ClearList
+    Selectlist Named(#MrankXPList)
+    #UF_VISID1u := #MRankVal.AsString
+    #UF_VISID2u := #MRank
+    #avListManager.AddtoList Visualid1(#UF_VISID1u) Visualid2(#UF_VISID2u) Nkey1(#MRankVal)
+    Endselect
+    #com_Owner.avGotoFreeState
+    Endroutine
+    End_Com

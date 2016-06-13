@@ -1,0 +1,36 @@
+﻿Field:
+  Name:               MName
+  Type:               Alphanumeric
+  Length:             25
+  Decimals:           0
+  Default Value:      "*BLANKS"
+  Enabled For RDMLX:  No
+  System Field:       No
+
+  Input Attributes:
+  - FE
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Name"
+      Label:              "Mech Name"
+      Heading1:           "Mech"
+      Heading2:           "Name"
+      Heading3:           " "
+
+  - FRA:
+      Description:        "Mech Name"
+      Label:              "Mech Name"
+      Heading1:           "Mech"
+      Heading2:           "Name"
+      Heading3:           " "
+
+  Source: |
+    *
+    Begin_Com Role(*EXTENDS #PRIM_OBJT)
+    
+    Begin_Com Role(*Visual #PRIM_EVEF) Name(#VisualEdit) Defaultvisual(True) Usepicklist(False) Componentversion(1) Height(21) Width(323)
+    
+    End_Com
+    
+    End_Com

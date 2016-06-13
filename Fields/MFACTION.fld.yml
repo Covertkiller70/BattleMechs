@@ -1,0 +1,45 @@
+﻿Field:
+  Name:               MFaction
+  Type:               Alphanumeric
+  Length:             25
+  Decimals:           0
+  Default Value:      "*BLANKS"
+  Enabled For RDMLX:  No
+  System Field:       No
+
+  Input Attributes:
+  - FE
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Faction"
+      Label:              "Mech Faction"
+      Heading1:           "Mech"
+      Heading2:           "Faction"
+      Heading3:           " "
+
+  - FRA:
+      Description:        "Mech Faction"
+      Label:              "Mech Faction"
+      Heading1:           "Mech"
+      Heading2:           "Faction"
+      Heading3:           " "
+
+  Source: |
+    *
+    Begin_Com Role(*EXTENDS #PRIM_OBJT)
+    
+    Begin_Com Role(*Visual #PRIM_EVEF) Name(#VisualEdit) Defaultvisual(True) Usepicklist(False) Componentversion(1) Height(21) Width(537)
+    
+    End_Com
+    
+    Begin_Com Role(*picklist) Name(#Picklist) Nomatchaction(Blanks)
+    
+    Define_Com Class(#PRIM_PKIT) Name(#INNERSPHERE) Value('INNERSPHERE') Parent(#Picklist) Default(True) Caption('Inner Sphere')
+    Define_Com Class(#PRIM_PKIT) Name(#CLAN) Value('CLAN') Caption('CLAN') Parent(#Picklist)
+    
+    End_Com
+    Begin_Com Role(*Visual #PRIM_EVPL) Name(#VisualPicklist) Appearance(DropDownList) Height(19) Componentversion(1) Width(349)
+    
+    End_Com
+    End_Com

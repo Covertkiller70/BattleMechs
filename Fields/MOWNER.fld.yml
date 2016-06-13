@@ -1,0 +1,28 @@
+﻿Field:
+  Name:               MOWNER
+  Type:               Alphanumeric
+  Length:             25
+  Decimals:           0
+  Default Value:      "*BLANKS"
+  Reference Field:    MUSER
+  Enabled For RDMLX:  No
+  System Field:       No
+
+  Input Attributes:
+  - FE
+  - LC
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Owner"
+      Label:              "Mech Owner"
+      Heading1:           "Mech"
+      Heading2:           "Owner"
+      Heading3:           " "
+
+  - FRA:
+      Description:        "Mech Owner"
+      Label:              "Mech Owner"
+      Heading1:           "Mech"
+      Heading2:           "Owner"
+      Heading3:           " "
