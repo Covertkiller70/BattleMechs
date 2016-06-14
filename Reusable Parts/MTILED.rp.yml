@@ -1,0 +1,106 @@
+﻿Reusable Part:
+  Name:               MTileD
+  Enabled For RDMLX:  Yes
+  Target Platform:    Browser
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Mech Tiles Design"
+
+  - FRA:
+      Description:        "Mech Tiles Design"
+
+  Source: |
+    Function Options(*DIRECT)
+    Begin_Com Role(*EXTENDS #PRIM_PANL *implements #Prim_Tile.iTileDesign *ListFields #Mechs) Displayposition(1) Height(193) Layoutmanager(#TableLayout1) Left(0) Tabposition(1) Top(0) Width(409) Style(#Style1)
+    
+    * Fields mapped in when the entry is added to the Tile
+    Group_By Name(#ListFields) Fields(#MName)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style1) Borderbottom(2) Borderleft(2) Borderright(2) Bordertop(2) Cornerbottomleft(4) Cornerbottomright(4) Cornertopleft(4) Cornertopright(4) Backgroundbrush(#Backgroundbrush1) Borderbrush(#Brush2)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush2) Color(255:194:12)
+    Define_Com Class(#PRIM_VS.ImageBrush) Name(#Backgroundbrush1) Image(#lava)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style2) Foregroundbrush(#Brush1)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush1) Color(255:194:12)
+    
+    
+    Define_Com Class(#Prim_tblo) Name(#TableLayout_1)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#TableLayout1)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column1) Displayposition(1) Parent(#TableLayout1)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column2) Displayposition(2) Parent(#TableLayout1)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row2) Displayposition(1) Parent(#TableLayout1) Height(1.55)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem1) Alignment(TopLeft) Column(#Column2) Flow(Down) Manage(#MName) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Marginleft(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem2) Column(#Column1) Manage(#Image1) Parent(#TableLayout1) Row(#Row2) Rowspan(2) Margintop(10) Marginleft(10) Marginbottom(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem3) Alignment(TopLeft) Column(#Column2) Flow(Down) Manage(#MClass) Parent(#TableLayout1) Row(#Row2) Marginleft(10) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem4) Alignment(TopLeft) Column(#Column2) Flow(Down) Manage(#MHealth) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Margintop(10) Marginleft(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem5) Alignment(TopLeft) Column(#Column2) Flow(Down) Manage(#MDamage) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Margintop(10) Marginleft(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem6) Alignment(TopLeft) Column(#Column2) Flow(Down) Manage(#MCBill) Parent(#TableLayout1) Row(#Row2) Sizing(FitToWidth) Marginleft(10) Margintop(10)
+    
+    Define_Com Class(#MName.Visual) Name(#MName) Displayposition(1) Parent(#COM_OWNER) Tabposition(1) Marginleft(50) Width(192) Height(33) Readonly(True) Caption('Name: ') Labeltype(Caption) Displayonly(True) Style(#Style2) Left(213)
+    Define_Com Class(#PRIM_IMAG) Name(#Image1) Displayposition(2) Parent(#COM_OWNER) Tabposition(2) Tabstop(False) Height(169) Width(193) Imagesizing(FitBoth)
+    Define_Com Class(#MClass.Visual) Name(#MClass) Displayposition(3) Left(213) Parent(#COM_OWNER) Tabposition(3) Marginleft(50) Width(192) Height(28) Readonly(True) Caption('Class: ') Labeltype(Caption) Displayonly(True) Style(#Style2) Top(33)
+    Define_Com Class(#MHealth.Visual) Name(#MHealth) Displayposition(4) Left(213) Parent(#COM_OWNER) Tabposition(4) Top(71) Labeltype(Caption) Caption('Health') Marginleft(50) Width(192) Displayonly(True) Style(#Style2)
+    Define_Com Class(#MDamage.Visual) Name(#MDamage) Componentversion(1) Displayposition(5) Height(21) Left(213) Parent(#COM_OWNER) Tabposition(5) Top(102) Usepicklist(False) Width(192) Caption('Damage') Labeltype(Caption) Marginleft(50) Displayonly(True) Style(#Style2)
+    Define_Com Class(#MCBill.Visual) Name(#MCBill) Displayposition(6) Left(213) Parent(#COM_OWNER) Tabposition(6) Top(133) Caption('Cost') Labeltype(Caption) Width(192) Marginleft(50) Displayonly(True) Style(#Style2)
+    
+    Group_By Name(#Mechs) Fields(#MName #MClass #MSpeed #MDesc #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER)
+    
+    
+    
+    Mthroutine Name(OnAdd) Options(*Redefine)
+    #Image1.FileName := #MIMAGE
+    
+    Endroutine
+    
+    Mthroutine Name(OnDelete) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnFind) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnItemGotFocus) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnItemGotReference) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnItemGotSelection) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnItemLostFocus) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnItemLostSelection) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnItemRealizing) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    Mthroutine Name(OnUpdate) Options(*Redefine)
+    
+    
+    Endroutine
+    
+    End_Com
