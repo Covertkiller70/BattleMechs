@@ -1,0 +1,556 @@
+﻿Web Page:
+  Name:               MechPage
+  Enabled For RDMLX:  Yes
+
+  Framework:
+    Id1:                10240
+    Id2:                30
+
+  Multilingual Details:
+  - ENG:
+      Description:        "Main Mech Web Page"
+
+  - FRA:
+      Description:        "Main Mech Web Page"
+
+  Source: |
+    Begin_Com Role(*EXTENDS #PRIM_WEB) Height(649) Width(1081) Theme(#MECHTHEME) Layoutmanager(#FullPage) Themedrawstyle('MechBackground')
+    Define_Com Class(#PRIM_VS.Style) Name(#Style1) Fontsize(72) Foregroundbrush(#LinearBrush1)
+    Define_Com Class(#PRIM_VS.LinearBrush) Name(#LinearBrush1) Colors(#BrushColors1)
+    Define_Com Class(#PRIM_VS.BrushColors) Name(#BrushColors1)
+    Define_Com Class(#PRIM_VS.BrushColor) Name(#BrushColor1) Color(255:194:12) Parent(#BrushColors1) Opacity(25)
+    Define_Com Class(#PRIM_VS.BrushColor) Name(#BrushColor2) At(25) Color(255:144:14) Parent(#BrushColors1) Opacity(75)
+    Define_Com Class(#PRIM_VS.BrushColor) Name(#BrushColor3) At(75) Color(204:8:8) Parent(#BrushColors1)
+    Define_Com Class(#PRIM_VS.ImageBrush) Name(#Foregroundbrush2) Tile(Tile)
+    Define_Com Class(#PRIM_VS.ImageBrush) Name(#Foregroundbrush1) Sizing(FitBoth)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style2) Cursor(Hand) Fontsize(14)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style3) Cursor(Hand)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style4) Cursor(Hand)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style5) Fontsize(36)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style6) Fontsize(12)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style7) Fontsize(36)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style8) Fontsize(36) Foregroundbrush(#Brush6)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush6) Color(ThemeText)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style13) Borderbottom(2) Borderleft(2) Borderright(2) Bordertop(2) Borderbrush(#Brush5)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush5) Color(255:194:12)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style9) Foregroundbrush(#Brush1)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush1) Color(ThemeText)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style10) Foregroundbrush(#Brush2)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush2) Color(ThemeText)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style11) Foregroundbrush(#Brush3)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush3) Color(ThemeText)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style12) Foregroundbrush(#Brush4)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush4) Color(ThemeText)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style14) Borderbottom(4) Borderbrush(#Brush7) Borderleft(4) Borderright(4) Bordertop(4) Cursor(Hand)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush7) Color(255:194:12)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style15)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style16) Borderbottom(6) Borderleft(6) Borderright(6) Bordertop(6) Cornerbottomleft(4) Cornerbottomright(4) Cornertopleft(4) Cornertopright(4) Cursor(Hand)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style17) Fontsize(28) Bold(True)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style18) Borderbottom(6) Borderleft(6) Borderright(6) Bordertop(6) Cornerbottomleft(4) Cornerbottomright(4) Cornertopleft(4) Cornertopright(4) Cursor(Hand)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style19) Fontsize(28) Bold(True)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style20) Fontsize(36) Cursor(Hand)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style21) Fontsize(36) Cursor(Hand)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style22) Foregroundbrush(#Brush8) Fontsize(24)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush8) Color(204:8:8)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style23) Foregroundbrush(#Brush9) Fontsize(24)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Brush9) Color(204:8:8)
+    
+    Define_Com Class(#PRIM_VS.Style) Name(#Style24) Borderbottom(0) Borderleft(0) Borderright(0) Bordertop(0) Cornerbottomleft(0) Cornerbottomright(0) Cornertopleft(0) Cornertopright(0)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#LoginLayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column7) Displayposition(1) Parent(#LoginLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row9) Displayposition(1) Parent(#LoginLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row10) Displayposition(2) Parent(#LoginLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row11) Displayposition(3) Parent(#LoginLayout)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#FIREItem2) Manage(#FIRE) Parent(#LoginLayout) Row(#Row9) Column(#Column7) Rowspan(4)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LoginLBLItem1) Manage(#LoginLBL) Parent(#LoginLayout) Row(#Row9) Column(#Column7) Flow(Down)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MUSERItem2) Manage(#MUSER) Parent(#LoginLayout) Row(#Row10) Sizing(None) Column(#Column7) Flow(Down) Alignment(TopCenter) Margintop(5)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#UsernameResetItem2) Manage(#UsernameReset) Parent(#LoginLayout) Row(#Row10) Sizing(None) Column(#Column7) Alignment(TopCenter) Flow(Down) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#PasswordResetItem2) Manage(#PasswordReset) Parent(#LoginLayout) Row(#Row10) Sizing(None) Column(#Column7) Alignment(TopCenter) Flow(Down) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LoginCMDItem1) Manage(#LoginCMD) Parent(#LoginLayout) Row(#Row10) Sizing(None) Column(#Column7) Alignment(TopCenter) Flow(Down) Margintop(30)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem1) Column(#Column7) Manage(#BlastDoorPNL) Parent(#LoginLayout) Row(#Row11)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Label1Item1) Manage(#RegisterLBL) Parent(#LoginLayout) Row(#Row10) Sizing(None) Column(#Column7) Alignment(TopCenter) Flow(Down) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MPASSWRDItem1) Manage(#MPASSWRD) Parent(#LoginLayout) Row(#Row10) Sizing(None) Column(#Column7) Alignment(TopCenter) Flow(Down) Margintop(10)
+    Define_Com Class(#PRIM_TBLO) Name(#FullPage)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column1) Displayposition(1) Parent(#FullPage)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row1) Displayposition(1) Parent(#FullPage)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LOGINPNLItem1) Manage(#LOGINPNL) Parent(#FullPage) Row(#Row1) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#BlastDoorPNLItem1) Manage(#BlastDoorPNL) Parent(#FullPage) Row(#Row1) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Sound1Item1) Manage(#DoorSound) Parent(#FullPage) Row(#Row1) Sizing(None) Column(#Column1) Alignment(TopLeft)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MusicItem1) Manage(#Music) Parent(#FullPage) Row(#Row1) Sizing(None) Column(#Column1) Alignment(TopLeft)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Panel1Item1) Manage(#RESETREGISTERPNL) Parent(#FullPage) Row(#Row1) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#SVRMSGItem1) Manage(#SVRMSG) Parent(#FullPage) Row(#Row1) Sizing(None) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#FGTUSRPNLItem1) Manage(#FGTUSRPNL) Parent(#FullPage) Row(#Row1) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#FGTPSWPNLItem1) Manage(#FGTPSWPNL) Parent(#FullPage) Row(#Row1) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Panel1Item2) Manage(#MainPNL) Parent(#FullPage) Row(#Row1) Column(#Column1)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LoginSoundItem1) Manage(#LoginSound) Parent(#FullPage) Row(#Row1) Sizing(None) Column(#Column1) Alignment(TopLeft)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Sound1Item2) Alignment(TopLeft) Column(#Column1) Manage(#LOGOFFSND) Parent(#FullPage) Row(#Row1) Sizing(None)
+    Define_Com Class(#PRIM_TBLO) Name(#BlastDoorlayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column2) Displayposition(1) Parent(#BlastDoorlayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row2) Displayposition(1) Parent(#BlastDoorlayout)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#BlastdoorItem1) Manage(#Blastdoor) Parent(#BlastDoorlayout) Row(#Row2) Column(#Column2)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem2) Column(#Column2) Manage(#RegisterLBL) Parent(#BlastDoorlayout) Row(#Row2) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem4) Column(#Column2) Manage(#RESETREGISTERPNL) Parent(#BlastDoorlayout) Row(#Row2) Sizing(None)
+    Define_Com Class(#PRIM_TBLO) Name(#REGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column4) Displayposition(1) Parent(#REGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row3) Displayposition(1) Parent(#REGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row4) Displayposition(2) Parent(#REGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row5) Displayposition(3) Parent(#REGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MUSER1Item1) Manage(#REGUSER) Parent(#REGLAYOUT) Row(#Row4) Sizing(None) Column(#Column4) Flow(Down) Margintop(10) Alignment(TopCenter)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MEmailItem1) Manage(#MEmail) Parent(#REGLAYOUT) Row(#Row4) Sizing(None) Column(#Column4) Flow(Down) Margintop(10) Alignment(TopCenter)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem5) Column(#Column4) Flow(Down) Manage(#REGPASSWORD) Parent(#REGLAYOUT) Row(#Row4) Sizing(None) Margintop(10) Alignment(TopCenter)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem6) Column(#Column4) Flow(Down) Manage(#CNFMPASS) Parent(#REGLAYOUT) Row(#Row4) Sizing(None) Margintop(10) Alignment(TopCenter)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem7) Column(#Column4) Flow(Right) Manage(#REGOKCMD) Parent(#REGLAYOUT) Row(#Row5) Sizing(None) Marginleft(-70)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem8) Column(#Column4) Flow(Right) Manage(#REGCNLCMD) Parent(#REGLAYOUT) Row(#Row5) Sizing(None) Marginleft(50)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem9) Alignment(TopCenter) Column(#Column4) Flow(Down) Manage(#MPASSWRD) Parent(#REGLAYOUT) Row(#Row4) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem10) Column(#Column4) Manage(#RGRTITLE) Parent(#REGLAYOUT) Row(#Row3) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem11) Column(#Column4) Manage(#REGBKIMG) Parent(#REGLAYOUT) Row(#Row3) Rowspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem12) Column(#Column4) Manage(#MSGLBL) Parent(#REGLAYOUT) Row(#Row4) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem3) Column(#Column4) Manage(#FGTUSRPNL) Parent(#REGLAYOUT) Row(#Row4) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem13) Column(#Column4) Manage(#FGTPSWPNL) Parent(#REGLAYOUT) Row(#Row4) Sizing(None)
+    Define_Com Class(#PRIM_TBLO) Name(#MSGLayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column3) Displayposition(1) Parent(#MSGLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row6) Displayposition(1) Parent(#MSGLayout)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MSGLBLItem1) Manage(#MSGLBL) Parent(#MSGLayout) Row(#Row6) Column(#Column3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Image1Item1) Manage(#LOADIMG) Parent(#MSGLayout) Row(#Row6) Column(#Column3)
+    Define_Com Class(#PRIM_TBLO) Name(#FGTUSRL)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column5) Displayposition(1) Parent(#FGTUSRL)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row7) Displayposition(1) Parent(#FGTUSRL)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row8) Displayposition(2) Parent(#FGTUSRL)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row12) Displayposition(3) Parent(#FGTUSRL)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#FGTUSRLBLTItem1) Manage(#FGTUSRLBLT) Parent(#FGTUSRL) Row(#Row7) Column(#Column5) Sizing(None) Flow(Down)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#FGTUSRCMDItem1) Manage(#FGTUSRCMD) Parent(#FGTUSRL) Row(#Row12) Sizing(None) Column(#Column5) Flow(Right) Marginleft(-70)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MEmail1Item1) Manage(#FGTEMAIL) Parent(#FGTUSRL) Row(#Row8) Sizing(None) Column(#Column5) Flow(Down)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Button1Item1) Manage(#FGTUSRCNL) Parent(#FGTUSRL) Row(#Row12) Sizing(None) Column(#Column5) Flow(Right) Marginleft(50)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem21) Column(#Column5) Manage(#FGTUSRBKGND) Parent(#FGTUSRL) Row(#Row7) Rowspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem22) Column(#Column5) Manage(#LoginSound) Parent(#FGTUSRL) Row(#Row7) Sizing(None) Alignment(TopLeft)
+    Define_Com Class(#PRIM_TBLO) Name(#FGTPSWL)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column6) Displayposition(1) Parent(#FGTPSWL)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row13) Displayposition(1) Parent(#FGTPSWL)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row14) Displayposition(2) Parent(#FGTPSWL)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row15) Displayposition(3) Parent(#FGTPSWL)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem14) Alignment(TopLeft) Column(#Column6) Flow(Down) Manage(#FGTUSRLBLT) Parent(#FGTPSWL) Row(#Row14) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem15) Alignment(TopLeft) Column(#Column6) Flow(Down) Manage(#FGTUSRCMD) Parent(#FGTPSWL) Row(#Row14) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem16) Column(#Column6) Flow(Down) Manage(#FGTPSWLBLT) Parent(#FGTPSWL) Row(#Row13) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem17) Column(#Column6) Flow(Right) Manage(#FGTPSWCMD) Parent(#FGTPSWL) Row(#Row15) Sizing(None) Marginright(50) Marginleft(-80)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem18) Alignment(TopLeft) Column(#Column6) Flow(Down) Manage(#FGTEMAIL) Parent(#FGTPSWL) Row(#Row14) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem19) Alignment(TopLeft) Column(#Column6) Flow(Down) Manage(#FGTUSRCNL) Parent(#FGTPSWL) Row(#Row14) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem20) Column(#Column6) Manage(#MainPNL) Parent(#FGTPSWL) Row(#Row14) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem31) Column(#Column6) Flow(Right) Manage(#FGTPSWCNL) Parent(#FGTPSWL) Row(#Row15) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem32) Column(#Column6) Manage(#FGTPSWUSR) Parent(#FGTPSWL) Row(#Row14) Sizing(None) Flow(Down) Marginbottom(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem33) Column(#Column6) Manage(#FGTPSWEMAIL) Parent(#FGTPSWL) Row(#Row14) Sizing(None) Flow(Down)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem34) Column(#Column6) Manage(#FGTPSWBKGND) Parent(#FGTPSWL) Row(#Row13) Rowspan(3)
+    Define_Com Class(#PRIM_TBLO) Name(#MainPNLLayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column8) Displayposition(1) Parent(#MainPNLLayout) Width(0.96)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column9) Displayposition(2) Parent(#MainPNLLayout) Width(1.04)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column10) Displayposition(3) Parent(#MainPNLLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row16) Displayposition(1) Parent(#MainPNLLayout) Height(0.94)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row17) Displayposition(2) Parent(#MainPNLLayout) Height(0.22)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row18) Displayposition(3) Parent(#MainPNLLayout) Height(2.43)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#HoldIMGItem1) Manage(#HoldIMG) Parent(#MainPNLLayout) Row(#Row16) Column(#Column8) Rowspan(3) Columnspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem23) Column(#Column8) Manage(#AVAPNL) Parent(#MainPNLLayout) Row(#Row16) Alignment(TopLeft) Rowspan(2) Columnspan(2)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem29) Alignment(TopRight) Column(#Column10) Flow(Left) Manage(#LOGOFFCMD) Parent(#MainPNLLayout) Row(#Row16) Sizing(None) Marginright(10) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem30) Alignment(TopLeft) Column(#Column8) Flow(Down) Manage(#LOGOFFSND) Parent(#MainPNLLayout) Row(#Row17) Sizing(None)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem35) Column(#Column8) Manage(#AVACHGPNL) Parent(#MainPNLLayout) Row(#Row16) Rowspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem43) Column(#Column8) Manage(#CHOICEPNL) Parent(#MainPNLLayout) Row(#Row17) Rowspan(3) Columnspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#Panel1Item3) Manage(#MechTilePNL) Parent(#MainPNLLayout) Row(#Row17) Column(#Column8) Rowspan(3) Columnspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#GOBACKItem1) Manage(#GOBACK) Parent(#MainPNLLayout) Row(#Row16) Sizing(None) Column(#Column10) Alignment(TopRight) Flow(Left) Margintop(10) Marginright(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem51) Column(#Column9) Manage(#LOADIMG) Parent(#MainPNLLayout) Row(#Row16) Sizing(None)
+    Define_Com Class(#PRIM_TBLO) Name(#AVALAYOUT)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column11) Displayposition(1) Parent(#AVALAYOUT) Width(0.55)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column12) Displayposition(2) Parent(#AVALAYOUT) Width(1.45)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row19) Displayposition(1) Parent(#AVALAYOUT) Units(Pixels) Height(85)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row23) Displayposition(2) Parent(#AVALAYOUT)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem24) Column(#Column11) Manage(#AVAIMG) Parent(#AVALAYOUT) Row(#Row19) Marginright(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem25) Alignment(TopLeft) Column(#Column12) Flow(Down) Manage(#ACCTUSR) Parent(#AVALAYOUT) Row(#Row19) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem26) Alignment(TopLeft) Column(#Column12) Flow(Down) Manage(#MCBill) Parent(#AVALAYOUT) Row(#Row19) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem27) Alignment(TopLeft) Column(#Column12) Flow(Down) Manage(#MRank) Parent(#AVALAYOUT) Row(#Row19) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem28) Alignment(TopLeft) Column(#Column12) Flow(Down) Manage(#MXP) Parent(#AVALAYOUT) Row(#Row19) Sizing(FitToWidth)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#AVACHGPNLItem1) Manage(#AVACHGPNL) Parent(#AVALAYOUT) Row(#Row23) Column(#Column11) Columnspan(2) Flow(Down)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#AVACHGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column13) Displayposition(1) Parent(#AVACHGLAYOUT)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row20) Displayposition(1) Parent(#AVACHGLAYOUT) Height(0.23)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row21) Displayposition(2) Parent(#AVACHGLAYOUT) Height(1.77)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem38) Alignment(TopLeft) Column(#Column13) Flow(Down) Manage(#AVACHGPSWD) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem40) Alignment(TopLeft) Column(#Column13) Flow(Down) Manage(#AVACHGEMAIL) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem41) Alignment(TopLeft) Column(#Column13) Flow(Down) Manage(#AVACHGCBILL) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem42) Alignment(TopLeft) Column(#Column13) Flow(Down) Manage(#AVACHGXP) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem44) Column(#Column13) Flow(Right) Manage(#AVACHGCMD) Parent(#AVACHGLAYOUT) Row(#Row20) Sizing(None) Marginright(10) Alignment(CenterLeft) Margintop(5)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MAdminItem1) Manage(#MAdmin) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(None) Column(#Column13) Flow(Down) Alignment(TopLeft) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem36) Alignment(TopLeft) Column(#Column13) Flow(Down) Manage(#AVACHGCNFPSWD) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(FitToWidth) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem37) Column(#Column13) Manage(#AVACHGFLPK) Parent(#AVACHGLAYOUT) Row(#Row21) Sizing(None) Alignment(TopLeft) Flow(Down) Margintop(10) Marginleft(100)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem39) Alignment(CenterLeft) Column(#Column13) Flow(Right) Manage(#MGMTCMD) Parent(#AVACHGLAYOUT) Row(#Row20) Sizing(None) Marginleft(10)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#ChoiceLayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column14) Displayposition(1) Parent(#ChoiceLayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column15) Displayposition(2) Parent(#ChoiceLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row22) Displayposition(1) Parent(#ChoiceLayout)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem45) Column(#Column15) Manage(#STOCKIMG) Parent(#ChoiceLayout) Row(#Row22)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem46) Column(#Column15) Manage(#STOCKLBL) Parent(#ChoiceLayout) Row(#Row22) Marginleft(5)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem47) Column(#Column14) Manage(#URHANGIMG) Parent(#ChoiceLayout) Row(#Row22) Marginright(5)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem48) Column(#Column14) Manage(#URHANGLBL) Parent(#ChoiceLayout) Row(#Row22)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem49) Column(#Column14) Manage(#MechTiles) Parent(#ChoiceLayout) Row(#Row22) Columnspan(2)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem50) Column(#Column15) Manage(#MechTilePNL) Parent(#ChoiceLayout) Row(#Row22) Sizing(None)
+    
+    Define_Com Class(#PRIM_TBLO) Name(#TileLayout)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column16) Displayposition(1) Parent(#TileLayout)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row24) Displayposition(1) Parent(#TileLayout)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#MechTilesItem1) Manage(#MechTiles) Parent(#TileLayout) Row(#Row24) Column(#Column16)
+    
+    Define_Com Class(#PRIM_LABL) Name(#LoginLBL) Caption('BATTLE MECHS') Displayposition(1) Ellipses(Word) Height(217) Left(0) Parent(#LOGINPNL) Tabposition(4) Tabstop(False) Top(0) Verticalalignment(Center) Width(1081) Style(#Style1) Alignment(Center)
+    Define_Com Class(#MUSER.Visual) Name(#MUSER) Displayposition(2) Parent(#LOGINPNL) Tabposition(3) Top(222) Width(252) Left(414) Labelposition(None) Marginleft(0) Placeholder('Username')
+    Define_Com Class(#PRIM_PHBN) Name(#LoginCMD) Displayposition(7) Left(417) Parent(#LOGINPNL) Tabposition(7) Top(409) Height(110) Width(246) Caption('ENTER MechXsphere') Themedrawstyle('PushButton') Tabstop(False)
+    Define_Com Class(#PRIM_IMAG) Name(#FIRE) Displayposition(8) Left(0) Parent(#LOGINPNL) Tabposition(6) Tabstop(False) Top(0) Height(649) Width(1081) Opacity(80) Filename('/Images/Mechs/MechLoginFire.gif') Imagesizing(FitBoth)
+    Define_Com Class(#PRIM_LABL) Name(#PasswordReset) Caption('Forgot Password?') Displayposition(5) Ellipses(Word) Height(25) Left(420) Parent(#LOGINPNL) Tabposition(1) Tabstop(False) Top(319) Verticalalignment(Center) Width(241) Alignment(Center) Style(#Style2)
+    Define_Com Class(#PRIM_LABL) Name(#UsernameReset) Displayposition(3) Ellipses(Word) Height(25) Left(410) Parent(#LOGINPNL) Tabposition(5) Tabstop(False) Top(253) Verticalalignment(Center) Width(261) Alignment(Center) Caption('Forgot Username?') Style(#Style3)
+    Define_Com Class(#PRIM_PANL) Name(#LOGINPNL) Displayposition(10) Height(649) Left(0) Parent(#COM_OWNER) Tabposition(1) Tabstop(False) Top(0) Width(1081) Layoutmanager(#LoginLayout) Visible(False)
+    Define_Com Class(#PRIM_PANL) Name(#BlastDoorPNL) Displayposition(7) Height(649) Left(0) Parent(#COM_OWNER) Tabposition(8) Tabstop(False) Top(0) Width(1081) Layoutmanager(#BlastDoorlayout)
+    Define_Com Class(#PRIM_IMAG) Name(#Blastdoor) Displayposition(1) Left(0) Parent(#BlastDoorPNL) Tabposition(1) Tabstop(False) Top(0) Imagesizing(FitBoth) Filename('/images/mechs/door.jpg') Height(649) Width(1081)
+    Define_Com Class(#PRIM_SOND) Name(#DoorSound) Displayposition(9) Left(0) Parent(#COM_OWNER) Tabposition(6) Top(0) Visible(False)
+    Define_Com Class(#PRIM_SOND) Name(#Music) Displayposition(8) Left(0) Parent(#COM_OWNER) Tabposition(5) Top(0) Visible(False) Cycletostart(True)
+    Define_Com Class(#PRIM_LABL) Name(#RegisterLBL) Caption('Not a Member? Sign up!') Displayposition(6) Ellipses(Word) Height(25) Left(414) Parent(#LOGINPNL) Tabposition(2) Tabstop(False) Top(354) Verticalalignment(Center) Width(252) Alignment(Center) Style(#Style4)
+    Define_Com Class(#PRIM_PANL) Name(#RESETREGISTERPNL) Displayposition(6) Left(0) Parent(#COM_OWNER) Tabposition(2) Tabstop(False) Top(0) Height(649) Width(1081) Visible(False) Layoutmanager(#REGLAYOUT)
+    Define_Com Class(#MUSER.Visual) Name(#REGUSER) Displayposition(1) Height(42) Parent(#RESETREGISTERPNL) Tabposition(1) Top(227) Width(260) Caption('Username') Labeltype(Caption) Marginleft(0) Left(410) Labelhoralignment(Center) Labelposition(Top) Margintop(21)
+    Define_Com Class(#MEmail.Visual) Name(#MEmail) Displayposition(5) Height(42) Parent(#RESETREGISTERPNL) Tabposition(4) Top(383) Width(268) Caption('Email') Labeltype(Caption) Marginleft(0) Left(406) Labelhoralignment(Center) Labelposition(Top) Margintop(21)
+    Define_Com Class(#MPASSWRD.Visual) Name(#REGPASSWORD) Displayposition(3) Parent(#RESETREGISTERPNL) Tabposition(2) Top(279) Width(264) Caption('Password') Labeltype(Caption) Marginleft(0) Left(408) Height(42) Labelhoralignment(Center) Labelposition(Top) Margintop(21)
+    Define_Com Class(#MPASSWRD.Visual) Name(#CNFMPASS) Displayposition(4) Parent(#RESETREGISTERPNL) Tabposition(3) Top(331) Caption('Confirm Password') Labeltype(Caption) Width(268) Marginleft(0) Left(406) Height(42) Labelhoralignment(Center) Labelposition(Top) Margintop(21)
+    Define_Com Class(#PRIM_PHBN) Name(#REGOKCMD) Caption('Register') Displayposition(6) Left(403) Parent(#RESETREGISTERPNL) Tabposition(5) Top(525) Width(135) Height(32) Buttondefault(True)
+    Define_Com Class(#PRIM_PHBN) Name(#REGCNLCMD) Displayposition(7) Left(588) Parent(#RESETREGISTERPNL) Tabposition(6) Top(525) Caption('Cancel') Height(32) Width(101) Buttoncancel(True)
+    Define_Com Class(#MPASSWRD.Visual) Name(#MPASSWRD) Displayposition(4) Left(414) Parent(#LOGINPNL) Tabposition(8) Top(288) Labelposition(None) Marginleft(0) Width(252) Placeholder('Password')
+    Define_Com Class(#PRIM_LABL) Name(#RGRTITLE) Caption('REGISTRATION') Displayposition(2) Ellipses(Word) Height(64) Left(0) Parent(#RESETREGISTERPNL) Tabposition(7) Tabstop(False) Top(76) Verticalalignment(Center) Width(1081) Style(#Style5) Alignment(Center)
+    Define_Com Class(#PRIM_IMAG) Name(#REGBKIMG) Displayposition(8) Left(0) Parent(#RESETREGISTERPNL) Tabposition(8) Tabstop(False) Top(0) Imagesizing(FitBoth) Height(649) Width(1081) Filename('/images/mechs/registration.gif') Opacity(50)
+    Define_Com Class(#PRIM_PPNL) Name(#SVRMSG) Left(364) Parent(#COM_OWNER) Top(248) Themedrawstyle('MediumTitle') Closeonclick(True) Layoutmanager(#MSGLayout) Height(153) Width(352)
+    Define_Com Class(#PRIM_LABL) Name(#MSGLBL) Caption('Label1') Displayposition(2) Ellipses(Word) Height(151) Left(0) Parent(#SVRMSG) Tabposition(1) Tabstop(False) Top(0) Verticalalignment(Center) Width(350) Alignment(Center) Themedrawstyle('MediumTitle') Style(#Style6)
+    Define_Com Class(#PRIM_PANL) Name(#FGTUSRPNL) Displayposition(4) Left(0) Parent(#COM_OWNER) Tabposition(9) Tabstop(False) Top(0) Layoutmanager(#FGTUSRL) Height(649) Width(1081) Visible(False)
+    Define_Com Class(#PRIM_PANL) Name(#FGTPSWPNL) Displayposition(2) Left(0) Parent(#COM_OWNER) Tabposition(10) Tabstop(False) Top(0) Layoutmanager(#FGTPSWL) Height(649) Width(1081) Visible(False)
+    Define_Com Class(#PRIM_LABL) Name(#FGTUSRLBLT) Caption('Forgot Username') Displayposition(4) Ellipses(Word) Height(217) Left(290) Parent(#FGTUSRPNL) Tabposition(2) Tabstop(False) Top(0) Verticalalignment(Center) Width(500) Alignment(Center) Style(#Style7)
+    Define_Com Class(#PRIM_PHBN) Name(#FGTUSRCMD) Caption('Submit') Displayposition(2) Left(410) Parent(#FGTUSRPNL) Tabposition(1) Top(525) Width(120) Height(32)
+    Define_Com Class(#PRIM_LABL) Name(#FGTPSWLBLT) Caption('Password Reset') Displayposition(1) Ellipses(Word) Height(30) Left(0) Parent(#FGTPSWPNL) Tabposition(1) Tabstop(False) Top(93) Verticalalignment(Center) Width(1081) Alignment(Center) Style(#Style8)
+    Define_Com Class(#PRIM_PHBN) Name(#FGTPSWCMD) Caption('Submit') Displayposition(2) Left(386) Parent(#FGTPSWPNL) Tabposition(2) Top(525) Height(32) Width(149)
+    Define_Com Class(#MEmail.Visual) Name(#FGTEMAIL) Displayposition(1) Parent(#FGTUSRPNL) Tabposition(4) Top(295) Left(365) Width(350) Height(60) Labelhoralignment(Center) Labelposition(Top) Marginleft(0) Margintop(21)
+    Define_Com Class(#PRIM_PHBN) Name(#FGTUSRCNL) Caption('Go Back') Displayposition(3) Left(580) Parent(#FGTUSRPNL) Tabposition(3) Top(525) Width(120) Height(32)
+    Define_Com Class(#PRIM_PANL) Name(#MainPNL) Displayposition(1) Left(0) Parent(#COM_OWNER) Tabposition(3) Tabstop(False) Top(0) Height(649) Width(1081) Layoutmanager(#MainPNLLayout) Visible(False)
+    Define_Com Class(#PRIM_IMAG) Name(#FGTUSRBKGND) Displayposition(5) Left(0) Parent(#FGTUSRPNL) Tabposition(5) Tabstop(False) Top(0) Height(649) Width(1081) Filename('/images/mechs/gears.jpg') Imagesizing(FitBoth) Opacity(30)
+    Define_Com Class(#PRIM_SOND) Name(#LoginSound) Displayposition(3) Left(0) Parent(#COM_OWNER) Tabposition(7) Top(0) Visible(False) Autoplay(False)
+    Define_Com Class(#PRIM_IMAG) Name(#HoldIMG) Displayposition(6) Left(0) Parent(#MainPNL) Tabposition(1) Tabstop(False) Top(0) Imagesizing(FitBoth) Filename('/images/mechs/mechHanger.jpg') Height(649) Width(1081) Opacity(50)
+    Define_Com Class(#PRIM_PANL) Name(#AVAPNL) Displayposition(5) Left(0) Parent(#MainPNL) Tabposition(2) Tabstop(False) Top(0) Height(210) Width(721) Layoutmanager(#AVALAYOUT)
+    Define_Com Class(#PRIM_IMAG) Name(#AVAIMG) Displayposition(3) Left(0) Parent(#AVAPNL) Tabposition(1) Tabstop(False) Top(0) Height(85) Width(189) Imagesizing(FitBoth) Style(#Style13) Mouseoverstyle(#Style14)
+    Define_Com Class(#MUSER.Visual) Name(#ACCTUSR) Displayposition(2) Left(199) Parent(#AVAPNL) Tabposition(2) Marginleft(80) Width(522) Caption('User ID') Labeltype(Caption) Marginright(10) Height(25) Displayonly(True) Themedrawstyle('Labels') Style(#Style9) Tabstop(False)
+    Define_Com Class(#MCBill.Visual) Name(#MCBill) Displayposition(5) Left(199) Parent(#AVAPNL) Tabposition(3) Top(46) Width(522) Marginleft(80) Caption('CBills') Labeltype(Caption) Displayonly(True) Themedrawstyle('Labels') Style(#Style10) Tabstop(False)
+    Define_Com Class(#MRank.Visual) Name(#MRank) Displayposition(4) Left(199) Parent(#AVAPNL) Tabposition(5) Width(522) Labeltype(Caption) Caption('Rank') Marginleft(80) Top(25) Displayonly(True) Themedrawstyle('Labels') Style(#Style11) Tabstop(False)
+    Define_Com Class(#MXP.Visual) Name(#MXP) Displayposition(6) Left(199) Parent(#AVAPNL) Tabposition(6) Top(67) Width(522) Caption('XP') Labeltype(Caption) Marginleft(80) Displayonly(True) Themedrawstyle('Labels') Style(#Style12) Tabstop(False)
+    Define_Com Class(#PRIM_PHBN) Name(#LOGOFFCMD) Displayposition(1) Left(968) Parent(#MainPNL) Tabposition(4) Width(103) Caption('Log off')
+    Define_Com Class(#PRIM_PHBN) Name(#GOBACK) Displayposition(3) Left(855) Parent(#MainPNL) Tabposition(3) Width(103) Caption('Go Back') Visible(False)
+    Define_Com Class(#PRIM_SOND) Name(#LOGOFFSND) Displayposition(5) Left(0) Parent(#COM_OWNER) Tabposition(4) Top(0) Visible(False) Autoplay(False)
+    Define_Com Class(#PRIM_PHBN) Name(#FGTPSWCNL) Caption('Cancel') Displayposition(3) Left(585) Parent(#FGTPSWPNL) Tabposition(3) Top(525) Height(32) Width(130)
+    Define_Com Class(#MUSER.Visual) Name(#FGTPSWUSR) Displayposition(4) Left(348) Parent(#FGTPSWPNL) Tabposition(4) Top(315) Width(384) Caption('Username') Labeltype(Caption) Marginleft(113)
+    Define_Com Class(#MEmail.Visual) Name(#FGTPSWEMAIL) Displayposition(5) Left(311) Parent(#FGTPSWPNL) Tabposition(5) Top(346) Width(459) Labeltype(Caption) Caption('Email Addres')
+    Define_Com Class(#PRIM_IMAG) Name(#FGTPSWBKGND) Displayposition(6) Left(0) Parent(#FGTPSWPNL) Tabposition(6) Tabstop(False) Top(0) Height(649) Width(1081) Opacity(30) Filename('/images/mechs/Gears.jpg') Imagesizing(FitBoth)
+    Define_Com Class(#PRIM_PANL) Name(#AVACHGPNL) Displayposition(1) Left(0) Parent(#AVAPNL) Tabposition(4) Tabstop(False) Top(85) Height(125) Width(721) Layoutmanager(#AVACHGLAYOUT) Visible(False) Style(#Style15) Themedrawstyle('Labels')
+    Define_Com Class(#MPASSWRD.Visual) Name(#AVACHGPSWD) Displayposition(1) Parent(#AVACHGPNL) Tabposition(1) Top(25) Width(721) Labeltype(Caption) Caption('Password') Marginleft(100)
+    Define_Com Class(#MAdmin.VisualPicklist) Name(#MAdmin) Displayposition(3) Parent(#AVACHGPNL) Tabposition(3) Top(87) Width(233) Marginleft(100)
+    Define_Com Class(#MEmail.Visual) Name(#AVACHGEMAIL) Displayposition(4) Parent(#AVACHGPNL) Tabposition(4) Top(116) Width(721) Caption('Email') Labeltype(Caption) Marginleft(100)
+    Define_Com Class(#MCBill.Visual) Name(#AVACHGCBILL) Displayposition(5) Parent(#AVACHGPNL) Tabposition(5) Top(147) Labeltype(Caption) Caption('CBills') Width(721) Marginleft(100)
+    Define_Com Class(#MXP.Visual) Name(#AVACHGXP) Displayposition(6) Parent(#AVACHGPNL) Tabposition(6) Top(178) Width(721) Labeltype(Caption) Caption('XP') Marginleft(100)
+    Define_Com Class(#PRIM_PHBN) Name(#AVACHGCMD) Caption('Confirm') Displayposition(7) Parent(#AVACHGPNL) Tabposition(8) Width(112) Left(0) Top(0)
+    Define_Com Class(#MPASSWRD.Visual) Name(#AVACHGCNFPSWD) Displayposition(2) Parent(#AVACHGPNL) Tabposition(2) Top(56) Width(721) Caption('Confirm') Labeltype(Caption) Marginleft(100)
+    Define_Com Class(#PRIM_WEB.FilePicker) Name(#AVACHGFLPK) Displayposition(8) Ellipses(Word) Height(25) Parent(#AVACHGPNL) Tabposition(7) Tabstop(False) Top(209) Verticalalignment(Center) Width(169) Themedrawstyle('PushButton') Caption('Change Avatar') Alignment(Center) Left(100)
+    Define_Com Class(#PRIM_PHBN) Name(#MGMTCMD) Caption('Users') Displayposition(9) Left(132) Parent(#AVACHGPNL) Tabposition(9) Width(102) Top(-5)
+    Define_Com Class(#PRIM_PANL) Name(#CHOICEPNL) Displayposition(4) Height(479) Left(0) Parent(#MainPNL) Tabposition(5) Tabstop(False) Top(170) Width(1081) Layoutmanager(#ChoiceLayout)
+    Define_Com Class(#PRIM_IMAG) Name(#STOCKIMG) Displayposition(3) Left(541) Parent(#CHOICEPNL) Tabposition(1) Tabstop(False) Top(0) Height(479) Width(540) Style(#Style16) Filename('/images/mechs/StockHanger.jpg') Imagesizing(FitBoth)
+    Define_Com Class(#PRIM_LABL) Name(#STOCKLBL) Caption('Stock Hanger') Displayposition(2) Ellipses(Word) Height(479) Left(546) Parent(#CHOICEPNL) Tabposition(2) Tabstop(False) Top(0) Verticalalignment(Center) Width(535) Style(#Style17) Alignment(Center) Mouseoverstyle(#Style21) Pressedstyle(#Style22)
+    Define_Com Class(#PRIM_IMAG) Name(#URHANGIMG) Displayposition(4) Left(0) Parent(#CHOICEPNL) Tabposition(3) Tabstop(False) Top(0) Height(479) Width(536) Style(#Style18) Filename('/images/mechs/MYHanger.jpg') Imagesizing(FitBoth) Opacity(80)
+    Define_Com Class(#PRIM_LABL) Name(#URHANGLBL) Caption('Your Hanger') Displayposition(1) Ellipses(Word) Height(479) Left(0) Parent(#CHOICEPNL) Tabposition(4) Tabstop(False) Top(0) Verticalalignment(Center) Width(541) Alignment(Center) Style(#Style19) Mouseoverstyle(#Style20) Pressedstyle(#Style23)
+    Define_Com Class(#PRIM_TILE<#MTILED>) Name(#MechTiles) Displayposition(1) Left(0) Parent(#MechTilePNL) Tabposition(1) Top(0) Height(479) Width(1081) Style(#Style24) Direction(TopToBottom)
+    Define_Com Class(#PRIM_PANL) Name(#MechTilePNL) Displayposition(2) Left(0) Parent(#MainPNL) Tabposition(6) Tabstop(False) Top(170) Height(479) Width(1081) Visible(False) Layoutmanager(#TileLayout)
+    Define_Com Class(#PRIM_IMAG) Name(#LOADIMG) Displayposition(1) Left(0) Parent(#SVRMSG) Tabposition(2) Tabstop(False) Top(0) Height(151) Width(350) Imagesizing(BestFit) Filename('/images/mechs/loading.gif') Visible(False)
+    
+    Define_Com Class(#MSVRMOD.Register) Name(#register)
+    Define_Com Class(#MSVRMOD.Login) Name(#login)
+    Define_Com Class(#MSVRMOD.ForgotUser) Name(#FUser)
+    Define_Com Class(#MSVRMOD.ForgotPass) Name(#FPass)
+    Define_Com Class(#MSVRMOD.ChangeProfile) Name(#CNGPRF)
+    Define_Com Class(#MSVRMOD.CheckOwn) Name(#Owner)
+    Define_Com Class(#MSVRMOD.LoadTiles) Name(#loadtiles)
+    
+    Define Field(#response) Type(*STRING)
+    Group_By Name(#Data) Fields(#MUSER #MPASSWRD #MEmail #MCBill #MXP #MAvatar #MAdmin #MRank #MRankVal #response)
+    Def_List Name(#Mechs) Fields(#MName #MClass #MSpeed #MDesc #MHeatSink #MEnergyW #MEnergyWQ #MKineticW #MKineticWQ #MRangedW #MRangedWQ #MJumpJets #MEquiptment #MHealth #MIMAGE #MHeatTol #MDamage #MOWNER) Type(*Working)
+    
+    * ======= All of this is in the LOGIN Panel ========================================================
+    * Starts the menu music and blast door animation for the login screen
+    Evtroutine Handling(#COM_OWNER.Initialize)
+    #DoorSound.FileName := "/Images/Mechs/blastdoor2.mp3"
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(DifferentEasingFromBottom) Delay(1000) Duration(700)
+    #Music.FileName := "/Images/mechs/MenuMusic.mp3"
+    #LoginSound.FileName := "/Images/mechs/login.wav"
+    #LOGOFFSND.FileName := "/Images/mechs/logoff.wav"
+    #Music.Play
+    Endroutine
+    
+    * When the user clicks the register text, it transitions to the register panel
+    Evtroutine Handling(#RegisterLBL.Click)
+    #COM_OWNER.Transition From(#LOGINPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#RESETREGISTERPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #REGUSER #REGPASSWORD #CNFMPASS #MEmail := *Blanks
+    Endroutine
+    
+    * Fire up the login procedure
+    Evtroutine Handling(#LoginCMD.Click)
+    #login.ExecuteAsync Data(#Data)
+    Endroutine
+    
+    Evtroutine Handling(#login.Completed)
+    * If we authenticated then take us to the Main panel and play the login sound
+    If Cond(#response *EQ 'Authenticated')
+    #COM_OWNER.Transition From(#LOGINPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #LoginSound.Play
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#MainPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #AVAIMG.FileName := #MAvatar
+    #ACCTUSR := #MUSER
+    * Run Through mech file and see if you own any Mechs
+    #Owner.ExecuteAsync Muser(#MUSER) Response(#response)
+    Else
+    * Otherwise tell us what went wrong
+    #MSGLBL := #response
+    #SVRMSG.ShowPopup
+    #MUSER #MPASSWRD := *BLANKS
+    Endif
+    Endroutine
+    * Show the My Mech button if any Mechs are owned, otherwise Grey it out
+    Evtroutine Handling(#Owner.Completed)
+    If Cond(#response *EQ OWN)
+    #URHANGIMG.FileName := '/images/mechs/MYHanger.jpg'
+    #URHANGLBL.Enabled := True
+    Else
+    #URHANGIMG.FileName := '/images/mechs/MYHangerGray.jpg'
+    #URHANGLBL.Enabled := False
+    Endif
+    Endroutine
+    
+    * If forgot username is clicked, take us to the username panel
+    Evtroutine Handling(#UsernameReset.Click)
+    #COM_OWNER.Transition From(#LOGINPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#FGTUSRPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #FGTEMAIL #MUSER := *BLANKS
+    Endroutine
+    
+    Evtroutine Handling(#PasswordReset.Click)
+    * If the user clicks on reset password, take us to the password reset panel
+    #COM_OWNER.Transition From(#LOGINPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#FGTPSWPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    Endroutine
+    * =============================================================================================
+    
+    * ===================== In the REGISTRATION Panel =============================================
+    * When the user clicks Cancel in the registration panel, it takes them back to the login panel
+    Evtroutine Handling(#REGCNLCMD.Click)
+    #COM_OWNER.Transition From(#RESETREGISTERPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #MUSER #MPASSWRD #CNFMPASS #MEmail := *Blanks
+    Endroutine
+    
+    * When the user tries to register a new user
+    Evtroutine Handling(#REGOKCMD.Click)
+    If Cond(#REGPASSWORD *NE #CNFMPASS)
+    * first make sure that both passwords match up
+    #MSGLBL := 'Passwords do not Match! Try again...'
+    #SVRMSG.ShowPopup
+    #REGPASSWORD #CNFMPASS := *BLANKS
+    Else
+    * other wise it takes the fields on the panel and fills in the fileds that are passed to the server module.
+    #MUSER := #REGUSER
+    #MPASSWRD := #REGPASSWORD
+    #register.Execute Data(#Data)
+    * If we come back registered, then takes us back to the splash screen and shows that we are registered
+    If Cond(#response *EQ 'Registered')
+    #COM_OWNER.Transition From(#RESETREGISTERPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #MSGLBL := 'Welcome to BattleMechs'
+    #SVRMSG.ShowPopup
+    #MPASSWRD := *BLANKS
+    Else
+    * Otherwise the response that comes back from the server module will say what went wrong
+    #MSGLBL := #response
+    #SVRMSG.ShowPopup
+    #REGUSER #REGPASSWORD #CNFMPASS #MEmail := *Blanks
+    Endif
+    Endif
+    Endroutine
+    * ==================================================================================================
+    
+    * ========================= Forgot Username Panel ====================================================
+    Evtroutine Handling(#FGTUSRCMD.Click)
+    * Pass the forgotten user's email to the server module
+    #MEmail := #FGTEMAIL
+    #FUser.ExecuteAsync Data(#Data)
+    Endroutine
+    
+    Evtroutine Handling(#FUser.Completed)
+    * Tell us the username or tell us what happened if we failed
+    #MSGLBL := #response
+    #SVRMSG.ShowPopup
+    Endroutine
+    
+    Evtroutine Handling(#FGTUSRCNL.Click)
+    * if the user cancel's then take us back to the login panel
+    #COM_OWNER.Transition From(#FGTUSRPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    Endroutine
+    * ==================================================================================================
+    
+    
+    * ========================== Forgot Password Panel =================================================
+    Evtroutine Handling(#FGTPSWCNL.Click)
+    * if the user cancels from forgot password then transision back to the login panel
+    #COM_OWNER.Transition From(#FGTPSWPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #FGTPSWUSR #FGTPSWEMAIL := *BLANKS
+    #Data := *NULL
+    Endroutine
+    
+    Evtroutine Handling(#FGTPSWCMD.Click)
+    * Password parameters sent to the server module to authenticate user
+    #MUSER := #FGTPSWUSR
+    #MEmail := #FGTPSWEMAIL
+    #FPass.ExecuteAsync Data(#Data)
+    Endroutine
+    
+    Evtroutine Handling(#FPass.Completed)
+    * if the username and the email are found then transision back to the login page and send an email to the user's email address
+    If Cond(#response *EQ 'Authenticated')
+    #COM_OWNER.Transition From(#FGTPSWPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #MSGLBL := 'Email Placeholder: Password is mechxsphere'
+    #SVRMSG.ShowPopup
+    #MPASSWRD := *BLANKS
+    Else
+    * otherwise tell us what went wrong
+    #MSGLBL := #response
+    #SVRMSG.ShowPopup
+    Endif
+    Endroutine
+    * ==================================================================================================
+    
+    * =========================== Change Profile Panel =================================================
+    * When the user click on thier avatar image it opens the change panel, they can change thier email/password
+    Evtroutine Handling(#AVAIMG.Click)
+    * if the user is not an admin it will only show them password/email and change avatar
+    If Cond(#MAdmin *EQ N)
+    #MAdmin.Visible #AVACHGCBILL.Visible #AVACHGXP.Visible #MGMTCMD.Visible := False
+    Else
+    #MAdmin.Visible #AVACHGCBILL.Visible #AVACHGXP.Visible #MGMTCMD.Visible := True
+    Endif
+    #AVACHGCBILL := #MCBill
+    #AVACHGXP := #MXP
+    #AVACHGEMAIL := #MEmail
+    * click on the image to open, if its already open close the change panel
+    If Cond(#AVACHGPNL.Visible *EQ True)
+    #AVAPNL.DisplayPosition := 2
+    #AVACHGPNL.Visible := False
+    Else
+    #AVAPNL.DisplayPosition := 1
+    #AVACHGPNL.Visible := True
+    Endif
+    Endroutine
+    
+    * Set the avatar field and change the image to the BLOB they picked
+    Evtroutine Handling(#AVACHGFLPK.FileSelected) File(#file)
+    #MAvatar #AVAIMG.FileName := #file.Blob
+    
+    Endroutine
+    
+    * Commit the changes to thier profile
+    Evtroutine Handling(#AVACHGCMD.Click)
+    * password check to make sure they match
+    If Cond(#AVACHGPSWD *NE #AVACHGCNFPSWD)
+    #MSGLBL := 'Passwords do not Match! Try again...'
+    #SVRMSG.ShowPopup
+    #REGPASSWORD #CNFMPASS := *BLANKS
+    Else
+    * otherwise pass everything into its filed and send it over
+    #MPASSWRD := #AVACHGPSWD
+    #MCBill := #AVACHGCBILL
+    #MXP := #AVACHGXP
+    #MEmail := #AVACHGEMAIL
+    #CNGPRF.ExecuteAsync Data(#Data)
+    Endif
+    Endroutine
+    
+    * show us the response and blank out the passwords and change the avatar
+    Evtroutine Handling(#CNGPRF.Completed)
+    #MSGLBL := #response
+    #SVRMSG.ShowPopup
+    #AVACHGPSWD #AVACHGCNFPSWD := *BLANKS
+    #AVAIMG.FileName := #MAvatar
+    Endroutine
+    * ==================================================================================================
+    
+    * ======================= Main Panel ===============================================================
+    * If the user clicks logoff, take us back to the login page and clear the username and password, also play the logoff sound
+    Evtroutine Handling(#LOGOFFCMD.Click)
+    #COM_OWNER.Transition From(#MechTilePNL) To(#CHOICEPNL) Transitiontype(RollUp) Duration(700)
+    #COM_OWNER.Transition From(#MainPNL) To(#BlastDoorPNL) Transitiontype(MoveToBottomFromTop) Duration(700)
+    #DoorSound.Play
+    #COM_OWNER.Transition From(#BlastDoorPNL) To(#LOGINPNL) Transitiontype(MoveToTopFromBottom) Delay(1000) Duration(700)
+    #LOGOFFSND.Play
+    #Data := *NULL
+    #AVACHGPNL.Visible := False
+    #GOBACK.Visible := False
+    Endroutine
+    * When the user clicks on the stock hanger, it loads up all the stock mech tiles
+    Evtroutine Handling(#STOCKLBL.Click)
+    Clr_List Named(#MechTiles)
+    #loadtiles.ExecuteAsync Mechs(#Mechs)
+    Execute Subroutine(load)
+    Endroutine
+    * when the tiles are done loading, transision to the tile panel and show the go back button
+    Evtroutine Handling(#loadtiles.Completed)
+    Selectlist Named(#Mechs)
+    Add_Entry To_List(#MechTiles)
+    Endselect
+    #COM_OWNER.Transition From(#CHOICEPNL) To(#MechTilePNL) Transitiontype(FlipBottom) Duration(700)
+    #GOBACK.Visible := True
+    Execute Subroutine(load)
+    Endroutine
+    * take us back to the choice panel if the user wants to select an owned mech
+    Evtroutine Handling(#GOBACK.Click)
+    #COM_OWNER.Transition From(#MechTilePNL) To(#CHOICEPNL) Transitiontype(FlipTop) Duration(700)
+    #GOBACK.Visible := False
+    Endroutine
+    * ==================================================================================================
+    Subroutine Name(load)
+    If Cond(#LOADIMG.Visible *EQ True)
+    #LOADIMG.Visible := False
+    #SVRMSG.AutoClose := True
+    #SVRMSG.ClosePopup
+    Else
+    #LOADIMG.Visible := True
+    #SVRMSG.AutoClose := False
+    #SVRMSG.ShowPopup
+    Endif
+    Endroutine
+    End_Com
+
+  Loading Screen:
+    Image:              None
